@@ -77,18 +77,13 @@ const update = async (req, res) => {
     #swagger.tags = ['Courses']
   */
   try {
-    const courseId = req.params.id;
-    const { name, code, credits, instructor } = req.body;
+        const courseId = req.params.id;
+        const { name, code, credits, instructor } = req.body;
     
-    if (!ObjectId.isValid(courseId)) {
-      return res.status(400).json({ message: 'Invalid ID format' });
-    }
-    
-    
-        if (!name || !email || !age || !major || !registrationDate || !status || !gpa) {
-          return res.status(400).json({ message: 'At least one field is required: name, email, age, major, registrationDate, status, gpa' });
+        if (!ObjectId.isValid(courseId)) {
+          return res.status(400).json({ message: 'Invalid ID format' });
         }
-    
+  
         const db = mongodb.getDb().db(process.env.DB_NAME);
         const toUpdate = {};
         if (name)         toUpdate.name        = name;

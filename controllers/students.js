@@ -88,13 +88,10 @@ const update = async (req, res) => {
     }
 
     const { name, email, age , major, registrationDate, status, gpa } = req.body;
-
-    if (!name || !email || !age || !major || !registrationDate || !status || !gpa) {
-      return res.status(400).json({ message: 'At least one field is required: name, email, age, major, registrationDate, status, gpa' });
-    }
-
+    
     const db = mongodb.getDb().db(process.env.DB_NAME);
     const toUpdate = {};
+    
     if (name)               toUpdate.name               = name;
     if (age)                toUpdate.age                = age;
     if (major)              toUpdate.major              = major;
