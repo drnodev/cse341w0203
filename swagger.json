@@ -1,24 +1,29 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Project",
-    "description": "CSE-341 API",
+    "title": "Project W03-04",
+    "description": "CSE-341 W03-04 API",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
   "basePath": "/",
   "tags": [
     {
-      "name": "Contacts",
-      "description": "Operations related to contacts"
+      "name": "Students"
+    },
+    {
+      "name": "Courses"
     }
   ],
   "schemes": [
     "http"
   ],
   "paths": {
-    "/contacts/": {
+    "/students/": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -36,6 +41,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -44,19 +52,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
+                "name": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "age": {
                   "example": "any"
                 },
-                "birthday": {
+                "major": {
+                  "example": "any"
+                },
+                "registrationDate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "gpa": {
                   "example": "any"
                 }
               }
@@ -70,14 +84,20 @@
           "400": {
             "description": "Bad Request"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/contacts/{id}": {
+    "/students/{id}": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -106,6 +126,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -120,23 +143,158 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
+                "name": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "age": {
                   "example": "any"
                 },
-                "birthday": {
+                "major": {
+                  "example": "any"
+                },
+                "registrationDate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "gpa": {
                   "example": "any"
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/courses/": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "code": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/courses/{id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -154,7 +312,62 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "code": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "delete": {
+        "tags": [
+          "Courses"
+        ],
         "description": "",
         "parameters": [
           {

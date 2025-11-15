@@ -19,6 +19,10 @@ app
 })
 .use('/', require('./routes'));
 
+process.on('uncaughtException', (err, origin) => {
+    console.log('Caught exception: ', err, origin); 
+});
+
 app.listen(port, () => {
     console.log(`app listening on ${port}`)
     mongodb.initDb()
