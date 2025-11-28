@@ -1,15 +1,16 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 const { list, byId, create, update, remove } = require('../controllers/students');
-const { validateNewStudent, validateUpdateStudent} = require('../middleware/students');
+const { validateNewStudent, validateUpdateStudent } = require('../middleware/students');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 
 
-router.get('/'      , list)  
-router.get('/:id'   , byId)  
-router.post('/'     , validateNewStudent    , create);
-router.put('/:id'   , validateUpdateStudent , update);
-router.delete('/:id', remove);  
+router.get('/', list)
+router.get('/:id', byId)
+router.post('/', isAuthenticated, validateNewStudent, create);
+router.put('/:id', isAuthenticated, validateUpdateStudent, update);
+router.delete('/:id', isAuthenticated, remove);
 
 module.exports = router;

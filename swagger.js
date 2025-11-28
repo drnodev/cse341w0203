@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const local = process.env.LOCAL === 'true';
 const schemes = local ? ['http'] : ['https']
-const host = local ? 'localhost:8080' : 'cse341w0203.onrender.com'
+const host = local ? 'localhost:3000' : 'cse341w0203.onrender.com'
 
 
 const doc = {
